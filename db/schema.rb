@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180420124416) do
+ActiveRecord::Schema.define(version: 20180420235505) do
 
   create_table "clinic_cards", force: :cascade do |t|
     t.integer "clinic_id"
@@ -50,8 +50,15 @@ ActiveRecord::Schema.define(version: 20180420124416) do
     t.index ["user_id"], name: "index_patients_on_user_id"
   end
 
+  create_table "patients_receipts", force: :cascade do |t|
+    t.integer "clinic_card_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["clinic_card_id"], name: "index_patients_receipts_on_clinic_card_id"
+  end
+
   create_table "receipts", force: :cascade do |t|
-    t.integer "clinic_id"
+    t.integer "patients_receipt_id"
     t.date "payday"
     t.string "service"
     t.integer "payment"
@@ -60,11 +67,12 @@ ActiveRecord::Schema.define(version: 20180420124416) do
     t.integer "payment_method", limit: 3, default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["clinic_id"], name: "index_receipts_on_clinic_id"
+    t.index ["patients_receipt_id"], name: "index_receipts_on_patients_receipt_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
+    t.boolean "business"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

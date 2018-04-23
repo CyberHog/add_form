@@ -1,0 +1,13 @@
+<nav>
+  <div class="nav-wrapper">
+    <a href="#!" class="brand-logo">Logo</a>
+    <ul class="right hide-on-med-and-down">
+        <li><a href="#"><i class="material-icons">search</i></a></li>
+        <li><a href="<%= users_path %>"><i class="material-icons">home</i></a></li>
+        <li><%= link_to "メニュー管理", :menus %></li>
+         <li><%= link_to "お会計", :patients_receipts
+          %></li>
+        <li><%= link_to 'アカウント作成', new_user_path %></li>
+    </ul>
+  </div>
+</nav>

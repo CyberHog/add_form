@@ -1,0 +1,28 @@
+<%  @page_title = "ユーザ管理" %>
+<h1><%=  @page_title %></h1>
+
+
+<p><%= link_to "ユーザ新規作成", :new_user %></p>
+
+<% if @users.present? %>
+<table class="highlight">
+  <tr>
+    <th>氏名</th>
+    <th>ビジネスユーザー？</th>
+    <th>操作</th>
+  </tr>
+  <% @users.each do |user| %>
+  <tr>
+    <td><%= link_to user.name, user %></td>
+    <td><%= user.business? ? "○" : "－" %></td>
+    <td>
+      <%= link_to "編集", [:edit, user] %> |
+      <%= link_to "削除", user, method: :delete,
+            data: { confirm: "本当に削除しますか?" } %>
+    </td>
+  </tr>
+  <% end %>
+</table>
+<% else %>
+<p>ユーザ情報がありません。</p>
+<% end %>

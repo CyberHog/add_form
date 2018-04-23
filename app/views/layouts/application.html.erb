@@ -1,14 +1,37 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>AddForm</title>
+    <title>add_form</title>
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons" %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   </head>
-
   <body>
-    <%= yield %>
+    <header>
+      <div calss="navbar-fixed">
+
+        <%= render "shared/header" %>
+
+      </div>
+    </header>
+
+    <main>
+      <% if flash.notice %>
+        <p class="notice"><%= notice %></p>
+      <% end %>
+      <p class="alert"><%= alert %></p>
+        <div class="container">
+
+          <%= yield %>
+
+        </div>
+    </main>
+
+    <footer class="page-footer">
+
+      <%= render "shared/footer" %>
+
+    </footer>
   </body>
 </html>
